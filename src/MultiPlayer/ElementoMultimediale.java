@@ -14,6 +14,7 @@ abstract class ElementoMultimediale {
 	public abstract void show();
 }
 
+// Immagine
 class Immagine extends ElementoMultimediale {
 	private int luminosita;
 
@@ -39,95 +40,97 @@ class Immagine extends ElementoMultimediale {
 	}
 }
 
-	class RegistrazioneAudio extends ElementoMultimediale {
-		private int durata;
-		private int volume;
+// Audio
+class RegistrazioneAudio extends ElementoMultimediale {
+	private int durata;
+	private int volume;
 
-		public RegistrazioneAudio(String titolo, int durata, int volume) {
-			super(titolo);
-			this.durata = durata;
-			this.volume = volume;
-		}
+	public RegistrazioneAudio(String titolo, int durata, int volume) {
+		super(titolo);
+		this.durata = durata;
+		this.volume = volume;
+	}
 
-		public boolean isRiproducibile() {
-			return true;
-		}
+	public boolean isRiproducibile() {
+		return true;
+	}
 
-		public void play() {
-			for (int i = 0; i < durata; i++) {
-				System.out.print(titolo + " ");
-				for (int j = 0; j < volume; j++) {
-					System.out.print("!");
-				}
-				System.out.println();
+	public void play() {
+		for (int i = 0; i < durata; i++) {
+			System.out.print(titolo + " ");
+			for (int j = 0; j < volume; j++) {
+				System.out.print("!");
 			}
-		}
-
-		public void show() {
-			throw new UnsupportedOperationException("Una registrazione audio non è un'immagine");
-		}
-
-		public void abbassaVolume() {
-			if (volume > 0) {
-				volume--;
-			}
-		}
-
-		public void alzaVolume() {
-			volume++;
+			System.out.println();
 		}
 	}
 
-	class Video extends ElementoMultimediale {
-		private int durata;
-		private int volume;
-		private int luminosita;
+	public void show() {
+		throw new UnsupportedOperationException("Una registrazione audio non è un'immagine");
+	}
 
-		public Video(String titolo, int durata, int volume, int luminosita) {
-			super(titolo);
-			this.durata = durata;
-			this.volume = volume;
-			this.luminosita = luminosita;
-		}
-
-		public boolean isRiproducibile() {
-			return true;
-		}
-
-		public void play() {
-			for (int i = 0; i < durata; i++) {
-				System.out.print(titolo + " ");
-				for (int j = 0; j < volume; j++) {
-					System.out.print("!");
-				}
-				for (int j = 0; j < luminosita; j++) {
-					System.out.print("*");
-				}
-				System.out.println();
-			}
-		}
-
-		public void show() {
-			throw new UnsupportedOperationException("Un video non è un'immagine statica");
-		}
-
-		public void abbassaVolume() {
-			if (volume > 0) {
-				volume--;
-			}
-		}
-
-		public void alzaVolume() {
-			volume++;
-		}
-
-		public void diminuisciLuminosita() {
-			if (luminosita > 0) {
-				luminosita--;
-			}
-		}
-
-		public void aumentaLuminosita() {
-			luminosita++;
+	public void abbassaVolume() {
+		if (volume > 0) {
+			volume--;
 		}
 	}
+
+	public void alzaVolume() {
+		volume++;
+	}
+}
+
+// Video
+class Video extends ElementoMultimediale {
+	private int durata;
+	private int volume;
+	private int luminosita;
+
+	public Video(String titolo, int durata, int volume, int luminosita) {
+		super(titolo);
+		this.durata = durata;
+		this.volume = volume;
+		this.luminosita = luminosita;
+	}
+
+	public boolean isRiproducibile() {
+		return true;
+	}
+
+	public void play() {
+		for (int i = 0; i < durata; i++) {
+			System.out.print(titolo + " ");
+			for (int j = 0; j < volume; j++) {
+				System.out.print("!");
+			}
+			for (int j = 0; j < luminosita; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+
+	public void show() {
+		throw new UnsupportedOperationException("Un video non è un'immagine statica");
+	}
+
+	public void abbassaVolume() {
+		if (volume > 0) {
+			volume--;
+		}
+	}
+
+	public void alzaVolume() {
+		volume++;
+	}
+
+	public void diminuisciLuminosita() {
+		if (luminosita > 0) {
+			luminosita--;
+		}
+	}
+
+	public void aumentaLuminosita() {
+		luminosita++;
+	}
+}
